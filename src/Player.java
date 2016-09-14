@@ -15,7 +15,7 @@ public class Player {
 
     }
 
-    void chooseWeapon() throws Exception {
+    void chooseWeapon() {
         System.out.println("Do you want a sword or mace?");
         weapon = Game.scanner.nextLine();
 
@@ -26,7 +26,9 @@ public class Player {
             System.out.println("Here's your mace!");
         }
         else {
-            throw new Exception("Invalid weapon");
+            //throw new Excpetion("Invalid weapon.")
+            System.out.println("Choose weapon again");
+            chooseWeapon();
         }
     }
 
@@ -41,7 +43,9 @@ public class Player {
             System.out.printf("Entering forest...");
         }
         else {
-            throw new Exception("Invalid location");
+            //throw new Exception("Invalid location");
+            System.out.println("location not recognized");
+            chooseLocation();
         }
     }
 }
