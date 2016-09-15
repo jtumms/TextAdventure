@@ -1,3 +1,4 @@
+import java.beans.Customizer;
 import java.util.Scanner;
 
 /**
@@ -5,6 +6,7 @@ import java.util.Scanner;
  */
 public class Game {
     static Scanner scanner = new Scanner(System.in); //moved scanner method to static
+    static Player player = new Player();
 
     public static void main(String[] args) throws Exception {
         System.out.println("Welcome, Traveller!");
@@ -12,21 +14,51 @@ public class Game {
         boolean keepRunning = true;
         while (keepRunning) {
 
-            Player player = new Player();
+
             player.chooseName();
             player.chooseWeapon();
             player.chooseLocation();
+            player.findItem("shield");
+            player.findItem("sword");
 
             System.out.println("You win!");
             System.out.println("Would you like to play again? tpe y or n");
 
-            String answer = scanner.nextLine();
+            String answer = customtLine();
             if (answer.equalsIgnoreCase("n")) {
                 keepRunning = false;
             }
         }
 
         System.out.println("Game Over");
+    }
+
+    static String customtLine() {
+        String line = scanner.nextLine();
+        while (line.startsWith("/")) {
+            switch (line) {
+                case "/exit":
+                    System.exit(0);
+                    break;
+                case "/inv":
+                    for (String item : player.items) {
+                        System.out.println(item);
+                    }
+                    if (player.items.isEmpty()) {
+                        System.out.println("You have no items.");
+                    }
+                    break;
+                default:
+                    System.out.println("Invlid command!");
+                    break;
+
+
+
+
+            }
+            line = scanner.nextLine();
+        }
+        return line;
     }
 }
 
