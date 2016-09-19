@@ -13,7 +13,7 @@ public class Player {
     void chooseName() {
         System.out.println("What is your name?");
         name = Game.customtLine();
-        System.out.println("Welcome, " + name);
+        System.out.printf("Welcome, %s\n", name);
 
     }
 
@@ -52,11 +52,11 @@ public class Player {
     }
 
     void findItem(String item) {
-        System.out.println("You found a  " + item + "! Press y to pick up.");
+        System.out.printf("You found a %s! Press y to pick up.\n", item);
         String answer = Game.customtLine();
         if (answer.equalsIgnoreCase("y")) {
             items.add(item);
-            System.out.println("You picked " + item + " up!");
+            System.out.printf("You picked %s up!\n", item);
         }
     }
 }
