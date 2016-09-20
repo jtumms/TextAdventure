@@ -3,11 +3,16 @@ import java.util.ArrayList;
 /**
  * Created by john.tumminelli on 9/14/16.
  */
-public class Player {
-    String name;
+public class Player extends Character{
     String weapon;
     String location;
+
     ArrayList<String> items = new ArrayList<>();
+
+    Player(){
+        this.health = 20;
+        this.damage = 20;
+    }
 
 
     void chooseName() {
